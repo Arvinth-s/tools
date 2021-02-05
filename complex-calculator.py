@@ -1,7 +1,19 @@
 # OM NAMO NARAYANA
 import numpy as np
 import cmath
-from tabulate import tabulate
+import subprocess
+import sys
+
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+
+try:
+    from tabulate import tabulate
+except:
+    install("tabulate")
+    from tabulate import tabulate
 
 
 """

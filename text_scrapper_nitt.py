@@ -1,8 +1,8 @@
 #OM NAMO NARAYANA
 import csv
 
-input_file = 'F:/users/barath/ContactDetails_2022Batch.txt'
-save_csv_file = 'F:/users/barath/nitt_1.csv'
+input_file = 'F:/users/barath/ContactDetails_2022Batch_Part2.txt'
+save_csv_file = 'F:/users/barath/nitt_2_TAMIL.csv'
 
 f = open(input_file, 'r', encoding="utf8")
 txt = f.read()
@@ -92,7 +92,22 @@ print('Name:', _name[select], 'Contact:', _contact[select], 'Address:', _address
 
 
 
+#change this to do any operation
+name=[] 
+contact =[] 
+branch =[] 
+roll_no=[]
+address = []
+for i in range(len(_name)):
+    if("Tamil" in _address[i][0]):
+        name.append(_name[i])
+        contact.append(_contact[i])
+        branch.append(_branch[i])
+        roll_no.append(_roll_no[i])
+        address.append(_address[i])
+
+
 with open(save_csv_file, 'w', newline='') as file:
     writer = csv.writer(file)
-    for i in range(len(_name)):
-        writer.writerow([_name[i][0], _contact[i][0], _branch[i][0], _roll_no[i][0], _address[i][0]])
+    for i in range(len(name)):
+        writer.writerow([name[i][0], contact[i][0], branch[i][0], roll_no[i][0], address[i][0]])

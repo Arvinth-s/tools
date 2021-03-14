@@ -1,6 +1,10 @@
 #OM NAMO NARAYANA
 import csv
-f = open('F:/users/barath/ContactDetails_2022Batch.txt', 'r', encoding="utf8")
+
+input_file = 'F:/users/barath/ContactDetails_2022Batch.txt'
+save_csv_file = 'F:/users/barath/nitt_1.csv'
+
+f = open(input_file, 'r', encoding="utf8")
 txt = f.read()
 temp_list = list(txt.split('.edu'))
 roll_no = []
@@ -88,7 +92,7 @@ print('Name:', _name[select], 'Contact:', _contact[select], 'Address:', _address
 
 
 
-with open('F:/users/barath/nitt_1.csv', 'w', newline='') as file:
+with open(save_csv_file, 'w', newline='') as file:
     writer = csv.writer(file)
     for i in range(len(_name)):
         writer.writerow([_name[i][0], _contact[i][0], _branch[i][0], _roll_no[i][0], _address[i][0]])

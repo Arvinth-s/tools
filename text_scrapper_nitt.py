@@ -1,5 +1,5 @@
 #OM NAMO NARAYANA
-f = open('F:/users/barath/ContactDetails_2022Batch_part2.txt', 'r', encoding="utf8")
+f = open('F:/users/barath/ContactDetails_2022Batch.txt', 'r', encoding="utf8")
 txt = f.read()
 temp_list = list(txt.split('.edu'))
 roll_no = []
@@ -12,13 +12,14 @@ dOB = []
 bloodGrp = []
 contactNo = []
 count = 0
+print(temp_list[0])
 
 for i, temp in enumerate(temp_list):
-    print(i)
     try:
         Name, ParentsName = list(temp.split('Name'))[1:3]
         Name, Roll_no = list(Name.split('No'))
         Roll_no, Branch = list(Roll_no.split("Branch"))
+        Branch, Batch = list(Branch.split('Batch'))
         ParentsName, Address = list(ParentsName.split('Address'))
         Address, DOB = list(Address.split('D.O.B'))
         DOB, BloodGrp = list(DOB.split('Group'))
@@ -30,14 +31,45 @@ for i, temp in enumerate(temp_list):
         bloodGrp.append(BloodGrp)
         dOB.append(DOB)
         name.append(Name)
-        print(roll_no[-1])
+        branch.append(Branch)
     except:
         count = count+1
-contact_number = []
+_contact = []
 for contact in contactNo:
     temp = list(contact.split('\n'))
-    contact_number.append([i for i in temp if(len(i)>1)])
+    _contact.append([i[3:] for i in temp if(len(i)>1)])
+_name = []
+for Name in name:
+    temp = list(Name.split('Roll'))
+    temp = list(temp[0].split(':'))
+    _name.append([i for i in temp if(len(i)>1)])
+_address = []
+for Address in address:
+    temp = list(Address.split(':'))
+    _address.append([i for i in temp if(len(i)>1)])
+_roll_no = []
+for Roll_no in roll_no:
+    temp = list(Roll_no.split(':'))
+    _roll_no.append([i for i in temp if(len(i)>1)])
+
+for Roll_no in roll_no:
+    temp = list(Roll_no.split(':'))
+    _roll_no.append([i for i in temp if(len(i)>1)])
+
+_branch = []
+for Branch in branch:
+    temp = list(Branch.split(':'))
+    _branch.append([i for i in temp if(len(i)>1)])
+
 print(count)
 print(len(name))
-print(contact_number[:100])
-print(name[100], contact_number[100])
+
+select = 122
+
+print('Name:', _name[select], 'Contact:', _contact[select], 'Address:', _address[select], 'Roll number:', _roll_no[select], 'Branch:', _branch[select])
+
+tn = []
+for i, addr in enumerate(_address):
+    if('Tamil' in addr[0]):
+        tn.append(_name[i])
+print(tn)

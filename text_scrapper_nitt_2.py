@@ -71,9 +71,5 @@ print('Name:', _name[select], 'Contact:', _contact[select], 'Address:', _address
 tn = []
 for i, addr in enumerate(_address):
     if('Tamil' in addr[0]):
-        print('hii')
         tn.append(_name[i])
 print(tn)
-
-A = 'TN' in "TNU"
-print('A:', A)

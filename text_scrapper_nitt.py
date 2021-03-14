@@ -42,7 +42,7 @@ for i, temp in enumerate(temp_list):
 _contact = []
 for contact in contactNo:
     temp = list(contact.split('\n'))
-    _contact.append([i[3:] for i in temp if(len(i)>1)])
+    _contact.append([i for i in temp if(len(i)>1)])
 _name = []
 for Name in name:
     temp = list(Name.split('Roll'))

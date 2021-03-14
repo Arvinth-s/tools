@@ -1,4 +1,5 @@
 #OM NAMO NARAYANA
+import csv
 f = open('F:/users/barath/ContactDetails_2022Batch.txt', 'r', encoding="utf8")
 txt = f.read()
 temp_list = list(txt.split('.edu'))
@@ -61,6 +62,23 @@ for Branch in branch:
     temp = list(Branch.split(':'))
     _branch.append([i for i in temp if(len(i)>1)])
 
+address = _address
+_address = []
+for addr in address:
+    addr = list(addr[0].split(','))
+    temp = ""
+    for i in addr:
+        temp = temp + " " + i
+    _address.append([temp])
+
+contact = _contact
+_contact = []
+for cont in contact:
+    temp = ""
+    for i in cont:
+        temp = temp + " " + i
+    _contact.append([temp])
+
 print(count)
 print(len(name))
 
@@ -68,8 +86,9 @@ select = 122
 
 print('Name:', _name[select], 'Contact:', _contact[select], 'Address:', _address[select], 'Roll number:', _roll_no[select], 'Branch:', _branch[select])
 
-tn = []
-for i, addr in enumerate(_address):
-    if('Tamil' in addr[0]):
-        tn.append(_name[i])
-print(tn)
+
+
+with open('F:/users/barath/nitt_1.csv', 'w', newline='') as file:
+    writer = csv.writer(file)
+    for i in range(len(_name)):
+        writer.writerow([_name[i][0], _contact[i][0], _branch[i][0], _roll_no[i][0], _address[i][0]])

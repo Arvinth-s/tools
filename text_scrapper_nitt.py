@@ -1,5 +1,5 @@
 #OM NAMO NARAYANA
-f = open('F:/users/barath/ContactDetails_2022Batch.txt', 'r')
+f = open('F:/users/barath/ContactDetails_2022Batch_part2.txt', 'r', encoding="utf8")
 txt = f.read()
 temp_list = list(txt.split('.edu'))
 roll_no = []
@@ -40,4 +40,4 @@ for contact in contactNo:
 print(count)
 print(len(name))
 print(contact_number[:100])
-print(name[550], contact_number[550])
+print(name[100], contact_number[100])
